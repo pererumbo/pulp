@@ -142,6 +142,8 @@ class HiGHS_CMD(LpSolver_CMD):
 
         with open(tmpOptions, "w") as options_file:
             options_file.write("\n".join(file_options))
+        if self.msg:
+            print(f"Running command:\n{command})
         process = subprocess.run(command, stdout=sys.stdout, stderr=sys.stderr)
 
         # HiGHS return code semantics (see: https://github.com/ERGO-Code/HiGHS/issues/527#issuecomment-946575028)
